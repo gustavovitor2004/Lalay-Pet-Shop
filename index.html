@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lalay Pet Shop em Feira de Santana - BA. Oferecemos banho, tosa, veterinário, vacinas e acessórios com o carinho que seu pet merece.">
+    <title>Lalay Pet Shop | Cuidado Amoroso para seu Pet</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variáveis de Cores e Estilos */
+        :root {
+            --pink: #f472b6;
+            --pink-dark: #db2777;
+            --pink-light: #fdf2f8;
+            --purple: #a855f7;
+            --purple-dark: #6b21a8;
+            --purple-light: #faf5ff;
+            --dark: #3730a3;
+            --text-main: #374151;
+            --text-muted: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f9fafb;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Reset e Configurações Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: #25d366;
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--pink);
+            color: var(--pink-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--pink-light);
+            transform: translateY(-2px);
+        }
+
+        /* Efeito de Reveal no Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header Fixo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            transition: var(--transition-smooth);
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: var(--white);
+            font-size: 0.85rem;
+            padding: 6px 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--pink-dark), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul a {
+            font-weight: 600;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+        }
+
+        nav ul a:hover {
+            color: var(--pink);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px 0;
+            background: radial-gradient(circle at top right, var(--pink-light) 0%, var(--purple-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--white);
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--white);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--pink-dark);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(244, 114, 182, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 580px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-container {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image-bg {
+            width: 380px;
+            height: 380px;
+            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+            border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%;
+            position: absolute;
+            z-index: 1;
+            animation: morphing 15s ease-in-out infinite;
+        }
+
+        .hero-illustration {
+            position: relative;
+            z-index: 2;
+            font-size: 12rem;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--white);
+            padding: 40px 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.08);
+        }
+
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .stat-card:not(:last-child) {
+            border-right: 1px solid #f3f4f6;
+        }
+
+        .stat-icon {
+            font-size: 1.8rem;
+            color: var(--pink);
+            margin-bottom: 10px;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* Serviços */
+        .services {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '🐾';
+            display: block;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            transition: var(--transition-smooth);
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(168, 85, 247, 0.08);
+            border-color: var(--pink-light);
+        }
+
+        .service-icon-wrapper {
+            width: 65px;
+            height: 65px;
+            border-radius: 18px;
+            background-color: var(--pink-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            background-color: var(--purple-light);
+        }
+
+        .service-icon-wrapper i {
+            font-size: 1.8rem;
+            color: var(--pink-dark);
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-icon-wrapper i {
+            color: var(--purple);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Seção Diferenciais: Por que escolher a Lalay? */
+        .why-choose {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .why-features {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .feature-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon-box i {
+            font-size: 1.3rem;
+            color: var(--purple);
+        }
+
+        .feature-text h4 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .why-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+            border-radius: 30px;
+            padding: 50px;
+            min-height: 400px;
+            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .why-illustration-inner i {
+            font-size: 7rem;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(244, 114, 182, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            font-size: 0.98rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--pink-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pink-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Seção Agendamento */
+        .cta-booking {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--purple-dark), var(--dark));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-booking::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 80%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .cta-booking-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-booking h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-booking p {
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-booking .btn-primary {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Localização e Contato */
+        .location-contact {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .contact-method {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background-color: var(--pink-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 1.3rem;
+            color: var(--pink-dark);
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .map-wrapper {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 6px solid var(--white);
+            outline: 1px solid rgba(0,0,0,0.05);
+            height: 400px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 80px 0 40px 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-about p {
+            max-width: 320px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition-smooth);
+        }
+
+        .social-link:hover {
+            background-color: var(--pink);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            color: var(--pink);
+            padding-left: 5px;
+        }
+
+        .footer-hours-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Botão Voltar ao Topo (Canto Esquerdo) */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+            transition: var(--transition-smooth);
+            opacity: 0;
+            pointer-events: none;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--pink-light);
+            color: var(--pink-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Botão Flutuante WhatsApp (Canto Direito) */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25d366;
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 99;
+            transition: var(--transition-smooth);
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08) translateY(-3px);
+            background-color: #20ba5a;
+        }
+
+        /* CTA Bar Fixa no Rodapé */
+        .cta-fixed-bar {
+            position: fixed;
+            bottom: -100px;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 98;
+            padding: 12px 24px;
+            transition: var(--transition-smooth);
+            border-top: 3px solid var(--pink);
+        }
+
+        .cta-fixed-bar.visible {
+            bottom: 0;
+        }
+
+        .cta-bar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .cta-bar-text {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .cta-bar-text span {
+            color: var(--pink-dark);
+        }
+
+        .cta-fixed-bar .btn-primary {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Animações Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 30% 60% 50%; }
+            100% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .stat-card:nth-child(2) {
+                border-right: none;
+            }
+            .stat-card:nth-child(even) {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+            .header-top {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                padding: 20px 0;
+                display: none;
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+            nav.active {
+                display: block;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 120px 0 70px 0;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                margin: 0 auto 30px auto;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .hero-image-container {
+                display: none;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .why-illustration {
+                order: -1;
+                min-height: 250px;
+                padding: 30px;
+            }
+            .why-illustration-inner i {
+                font-size: 5rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .map-wrapper {
+                height: 300px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .cta-bar-text {
+                font-size: 0.85rem;
+            }
+            .cta-fixed-bar {
+                padding: 10px 16px;
+            }
+            /* Reposiciona botões fixos acima da barra de CTA para não tampar */
+            .back-to-top {
+                bottom: 80px;
+                left: 20px;
+                width: 44px;
+                height: 44px;
+            }
+            .whatsapp-float {
+                bottom: 80px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .stat-card {
+                border-right: none !important;
+                border-bottom: 1px solid #f3f4f6;
+                padding-bottom: 20px;
+            }
+            .stat-card:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .cta-bar-text {
+                display: none;
+            }
+            .cta-bar-container {
+                justify-content: center;
+                width: 100%;
+            }
+            .cta-fixed-bar .btn-primary {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Fixo -->
+    <header id="header">
+        <div class="header-top">
+            <i class="fa-regular fa-clock"></i> Segunda a Sábado, até as 19h | Atendimento Amoroso 🐾
+        </div>
+        <div class="header-main container">
+            <a href="#" class="logo">
+                <!-- SVG Logo Temático (Patinha + Nome) -->
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="55" r="25" fill="#f472b6" />
+                    <circle cx="25" cy="25" r="12" fill="#a855f7" />
+                    <circle cx="50" cy="15" r="12" fill="#a855f7" />
+                    <circle cx="75" cy="25" r="12" fill="#a855f7" />
+                </svg>
+                <span class="logo-text">Lalay Pet Shop</span>
+            </a>
+            
+            <i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>
+            
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Por que Lalay?</a></li>
+                    <li><a href="#depoimentos">Avaliações</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-medal"></i> 4.9★ no Google com muito carinho!
+                </div>
+                <h1>Onde o cuidado e o <span>amor de titia</span> encontram o seu melhor amigo!</h1>
+                <p>Somos um pet shop completo gerido por mulheres apaixonadas por animais. Aqui, cada detalhe é planejado para o bem-estar e a segurança do seu companheiro de quatro patas.</p>
+                <div class="hero-ctas">
+                    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Agendar Horário
+                    </a>
+                    <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image-bg"></div>
+                <div class="hero-illustration">
+                    <i class="fa-solid fa-dog"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Stats -->
+    <section class="container stats-bar">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fa-solid fa-star stat-icon"></i>
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Nota no Google</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-comments stat-icon"></i>
+                <div class="stat-number">32</div>
+                <div class="stat-label">Avaliações Reais</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-heart stat-icon"></i>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Cuidado de Titia</div>
+            </div>
+            <div class="stat-card">
+                <i class="fa-solid fa-venus stat-icon"></i>
+                <div class="stat-number">Feminina</div>
+                <div class="stat-label">Liderança e Carinho</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Nossos Serviços -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos o cuidado completo que seu pet precisa para estar sempre saudável, limpinho e muito feliz.</p>
+            </div>
+            <div class="services-grid">
+                
+                <!-- Banho & Tosa -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-bath"></i>
+                    </div>
+                    <h3>Banho & Tosa</h3>
+                    <p>Água quentinha, secagem cuidadosa e tosa com amor. Higienização e estética com produtos de excelência.</p>
+                </div>
+
+                <!-- Consulta Veterinária -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+                    <h3>Consulta Veterinária</h3>
+                    <p>Atendimento clínico com profissionais atenciosas e capacitadas para examinar a saúde geral do seu pet.</p>
+                </div>
+
+                <!-- Vacinas & Medicamentos -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-syringe"></i>
+                    </div>
+                    <h3>Vacinas & Medicamentos</h3>
+                    <p>Imunização em dia e uma linha farmacêutica completa para a prevenção e tratamento do seu companheiro.</p>
+                </div>
+
+                <!-- Ração & Petiscos -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-bone"></i>
+                    </div>
+                    <h3>Ração & Petiscos</h3>
+                    <p>As marcas mais recomendadas de alimentos e petiscos selecionados para uma rotina nutritiva e saborosa.</p>
+                </div>
+
+                <!-- Acessórios para Pets -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-tag"></i>
+                    </div>
+                    <h3>Acessórios para Pets</h3>
+                    <p>Brinquedos educativos, caminhas confortáveis, coleiras e guias seguras e roupas cheias de charme.</p>
+                </div>
+
+                <!-- Entrega a Domicílio -->
+                <div class="service-card reveal">
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <h3>Entrega a Domicílio</h3>
+                    <p>Praticidade e comodidade: levamos alimentos, remédios e mimos diretamente na sua residência.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Por que escolher a Lalay? -->
+    <section class="why-choose" id="sobre">
+        <div class="container why-grid">
+            <div class="reveal">
+                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                    <h2 style="text-align: left;">Por que escolher a Lalay?</h2>
+                    <p>Acreditamos que cada animalzinho é único e merece muito respeito e afeição.</p>
+                </div>
+                <div class="why-features">
+                    <div class="feature-item">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Atendimento Amoroso</h4>
+                            <p>Nosso cuidado é humanizado, tratando cada pet como um membro da nossa própria família.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-venus"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Empreendedoras Apaixonadas</h4>
+                            <p>Uma empresa fundada por mulheres, dedicada ao profissionalismo aliado ao instinto protetor.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon-box">
+                            <i class="fa-solid fa-shield-dog"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Ambiente Seguro</h4>
+                            <p>Espaço limpo, adaptado e higienizado constantemente para garantir o bem-estar dos animais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-illustration reveal">
+                <div class="why-illustration-inner">
+                    <i class="fa-solid fa-paw"></i>
+                    <h3>Amor e Dedicação</h3>
+                    <p style="color: var(--text-muted); max-width: 300px; margin: 10px auto 0 auto;">Cuidamos de cada detalhe com a delicadeza de quem ama de verdade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Reais -->
+    <section class="testimonials" id="depoimentos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>O que dizem os clientes</h2>
+                <p>Nossa maior recompensa é o carinho dos clientes e ver as caudas abanando de alegria.</p>
+            </div>
+            <div class="testimonials-grid">
+                
+                <div class="testimonial-card reveal">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-quote">"Minha mel amou os cuidados das titias, sem dúvidas um ótimo petshop!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Mãe da Mel</h4>
+                            <span>Cliente Verificada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-quote">"Ótimo atendimento e produtos com preços incríveis e acessíveis."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info">
+                            <h4>Tutor do Thor</h4>
+                            <span>Cliente Verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-quote">"Parabéns a Lalay petshop, pessoal trabalha com amor aos animais."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info">
+                            <h4>Tutor do Fred</h4>
+                            <span>Cliente Verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal" style="display: none;" id="extra-test">
+                    <div>
+                        <div class="testimonial-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-quote">"Excelente atendimento, tem uma atenção e cuidado muito especial com o pet, super recomendo!!!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L</div>
+                        <div class="author-info">
+                            <h4>Mãe da Luna</h4>
+                            <span>Cliente Verificada</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Agendamento -->
+    <section class="cta-booking">
+        <div class="container cta-booking-content reveal">
+            <h2>Quer ver seu pet cheiroso e feliz?</h2>
+            <p>Os atendimentos para Banho, Tosa e Consultas Veterinárias podem ser agendados em poucos segundos através do nosso WhatsApp. Escolha o melhor dia e horário!</p>
+            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Localização e Contato -->
+    <section class="location-contact" id="contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Onde Estamos & Contatos</h2>
+                <p>Venha nos visitar ou tire suas dúvidas rapidamente.</p>
+            </div>
+            <div class="location-grid">
+                
+                <div class="contact-info reveal">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Endereço</h4>
+                            <p>R. Oscar Freitas, 55A - Lagoa Salgada<br>Feira de Santana - BA, CEP 44082-070</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Telefone & WhatsApp</h4>
+                            <p><a href="https://api.whatsapp.com/send?phone=5575981116670" target="_blank">(75) 98111-6670</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sábado: Até as 19h<br>Domingo: Fechado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-wrapper reveal">
+                    <!-- Google Maps Iframe Real -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.7027582531065!2d-38.93721342398457!3d-12.268393387985474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714399e59d9c8bf%3A0xc3f6e5a0da2928ee!2sR.%20Oscar%20Freitas%2C%2055a%20-%20Lagoa%20Salgada%2C%20Feira%20de%20Santana%20-%20BA%2C%2044082-070!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="55" r="25" fill="#f472b6" />
+                        <circle cx="25" cy="25" r="12" fill="#a855f7" />
+                        <circle cx="50" cy="15" r="12" fill="#a855f7" />
+                        <circle cx="75" cy="25" r="12" fill="#a855f7" />
+                    </svg>
+                    <span class="footer-logo-text">Lalay Pet Shop</span>
+                </div>
+                <p>Cuidado de alto nível para animais domésticos, executado com o afeto de quem ama o que faz.</p>
+                <div class="footer-socials">
+                    <a href="https://api.whatsapp.com/send?phone=5575981116670" class="social-link" aria-label="WhatsApp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Nossos Serviços</a></li>
+                    <li><a href="#sobre">Por que Lalay?</a></li>
+                    <li><a href="#depoimentos">Avaliações</a></li>
+                    <li><a href="#contato">Fale Conosco</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-title">Funcionamento</h4>
+                <ul class="footer-hours-list">
+                    <li><strong>Segunda a Sexta:</strong> 08:00 às 19:00</li>
+                    <li><strong>Sábado:</strong> 08:00 às 19:00</li>
+                    <li><strong>Domingos e Feriados:</strong> Fechado</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; <span id="current-year"></span> Lalay Pet Shop. Todos os direitos reservados. CNPJ sob consulta.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo (Canto Esquerdo) -->
+    <div class="back-to-top" id="back-to-top" title="Voltar ao Topo">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <!-- Botão Flutuante WhatsApp (Canto Direito) -->
+    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="whatsapp-float" target="_blank" aria-label="Chamar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- CTA Bar Fixa no Rodapé -->
+    <div class="cta-fixed-bar" id="cta-fixed-bar">
+        <div class="cta-bar-container">
+            <div class="cta-bar-text">
+                🐶 Banho, Tosa e Veterinário com o <span>amor de titia</span>! Agende hoje mesmo:
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        // Define o ano atual no footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Menu Mobile Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('fa-bars');
+            menuToggle.classList.toggle('fa-xmark');
+        });
+
+        // Fecha menu ao clicar em qualquer item (Mobile)
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.add('fa-bars');
+                menuToggle.classList.remove('fa-xmark');
+            });
+        });
+
+        // Alternar visualização da quarta avaliação rotativa para dinamismo de depoimentos
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        if (testimonials.length > 3) {
+            let index = 0;
+            setInterval(() => {
+                testimonials[index].style.display = 'none';
+                index = (index + 1) % testimonials.length;
+                
+                // Garante exibição de 3 por vez
+                for (let i = 0; i < 3; i++) {
+                    let showIndex = (index + i) % testimonials.length;
+                    testimonials[showIndex].style.display = 'flex';
+                }
+            }, 6000);
+        }
+
+        // Elementos flutuantes controlados por scroll
+        const backToTop = document.getElementById('back-to-top');
+        const ctaFixedBar = document.getElementById('cta-fixed-bar');
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+
+            // Botão voltar ao topo
+            if (scrollPosition > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // CTA bar fixa no rodapé
+            if (scrollPosition > 450) {
+                ctaFixedBar.classList.add('visible');
+            } else {
+                ctaFixedBar.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Roda a animação apenas uma vez
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
