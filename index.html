@@ -3,1548 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lalay Pet Shop em Feira de Santana - BA. Oferecemos banho, tosa, veterinário, vacinas e acessórios com o carinho que seu pet merece.">
-    <title>Lalay Pet Shop | Cuidado Amoroso para seu Pet</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
+    <title>Lalay Pet Shop | Banho, Tosa e Veterinário em Feira de Santana - BA</title>
+    <meta name="description" content="O 3º maior pet shop de Feira de Santana. Atendimento amoroso, banho e tosa, veterinário e acessórios na Lagoa Salgada. Seu pet amado como família!">
+    <meta property="og:title" content="Lalay Pet Shop - Cuidado com Amor em Feira de Santana">
+    <meta property="og:description" content="Banho, tosa, vacinas e rações com o carinho que seu pet merece. 4.9★ no Google!">
+    <meta property="og:url" content="https://lalaypetshop.vercel.app">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='%23f97316'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* Variáveis de Cores e Estilos */
+        /* VARIÁVEIS */
         :root {
-            --pink: #f472b6;
-            --pink-dark: #db2777;
-            --pink-light: #fdf2f8;
-            --purple: #a855f7;
-            --purple-dark: #6b21a8;
-            --purple-light: #faf5ff;
-            --dark: #3730a3;
-            --text-main: #374151;
-            --text-muted: #6b7280;
+            --primary: #f97316;
+            --primary-dark: #ea580c;
+            --secondary: #fb923c;
+            --secondary-dark: #9a3412;
+            --accent: #fff7ed;
+            --purple-light: #fffbeb;
+            --bg: #fafaf9;
+            --text: #1c1917;
+            --text-muted: #78716c;
             --white: #ffffff;
-            --bg-light: #f9fafb;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Reset e Configurações Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Nunito', sans-serif;
-            color: var(--text-main);
-            background-color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: #25d366;
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: #20ba5a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--pink);
-            color: var(--pink-dark);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--pink-light);
-            transform: translateY(-2px);
-        }
-
-        /* Efeito de Reveal no Scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Header Fixo */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            z-index: 100;
-            transition: var(--transition-smooth);
-        }
-
-        .header-top {
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            color: var(--white);
-            font-size: 0.85rem;
-            padding: 6px 0;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .header-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, var(--pink-dark), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        nav ul a {
-            font-weight: 600;
-            color: var(--text-main);
-            transition: var(--transition-smooth);
-            font-size: 0.95rem;
-        }
-
-        nav ul a:hover {
-            color: var(--pink);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px 0;
-            background: radial-gradient(circle at top right, var(--pink-light) 0%, var(--purple-light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: var(--white);
-            clip-path: ellipse(60% 100% at 50% 100%);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--white);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--pink-dark);
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(244, 114, 182, 0.15);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--pink);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            max-width: 580px;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .hero-image-container {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-image-bg {
-            width: 380px;
-            height: 380px;
-            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
-            border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%;
-            position: absolute;
-            z-index: 1;
-            animation: morphing 15s ease-in-out infinite;
-        }
-
-        .hero-illustration {
-            position: relative;
-            z-index: 2;
-            font-size: 12rem;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Stats Bar */
-        .stats-bar {
-            background-color: var(--white);
-            padding: 40px 0;
-            position: relative;
-            z-index: 5;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(168, 85, 247, 0.08);
-        }
-
-        .stat-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 10px;
-        }
-
-        .stat-card:not(:last-child) {
-            border-right: 1px solid #f3f4f6;
-        }
-
-        .stat-icon {
-            font-size: 1.8rem;
-            color: var(--pink);
-            margin-bottom: 10px;
-        }
-
-        .stat-number {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 1.6rem;
-            color: var(--dark);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        /* Serviços */
-        .services {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px auto;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .section-header h2::after {
-            content: '🐾';
-            display: block;
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            transition: var(--transition-smooth);
-            border: 1px solid transparent;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(168, 85, 247, 0.08);
-            border-color: var(--pink-light);
-        }
-
-        .service-icon-wrapper {
-            width: 65px;
-            height: 65px;
-            border-radius: 18px;
-            background-color: var(--pink-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            transition: var(--transition-smooth);
-        }
-
-        .service-card:hover .service-icon-wrapper {
-            background-color: var(--purple-light);
-        }
-
-        .service-icon-wrapper i {
-            font-size: 1.8rem;
-            color: var(--pink-dark);
-            transition: var(--transition-smooth);
-        }
-
-        .service-card:hover .service-icon-wrapper i {
-            color: var(--purple);
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: var(--dark);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-
-        /* Seção Diferenciais: Por que escolher a Lalay? */
-        .why-choose {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .why-features {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 20px;
-        }
-
-        .feature-icon-box {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--purple-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .feature-icon-box i {
-            font-size: 1.3rem;
-            color: var(--purple);
-        }
-
-        .feature-text h4 {
-            font-size: 1.15rem;
-            margin-bottom: 6px;
-        }
-
-        .feature-text p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .why-illustration {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
-            border-radius: 30px;
-            padding: 50px;
-            min-height: 400px;
-            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.5);
-            text-align: center;
-        }
-
-        .why-illustration-inner i {
-            font-size: 7rem;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        /* Depoimentos */
-        .testimonials {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(244, 114, 182, 0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .testimonial-stars {
-            color: #fbbf24;
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-quote {
-            font-style: italic;
-            color: var(--text-main);
-            margin-bottom: 25px;
-            font-size: 0.98rem;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--pink-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pink-dark);
-            font-weight: 700;
-            font-size: 1rem;
-            border: 2px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .author-info h4 {
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .author-info span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Seção Agendamento */
-        .cta-booking {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--purple-dark), var(--dark));
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-booking::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -30%;
-            width: 80%;
-            height: 180%;
-            background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, transparent 60%);
-            z-index: 1;
-        }
-
-        .cta-booking-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .cta-booking h2 {
-            color: var(--white);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-booking p {
-            font-size: 1.15rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .cta-booking .btn-primary {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-        }
-
-        /* Localização e Contato */
-        .location-contact {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .location-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
-            align-items: start;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-        }
-
-        .contact-method {
-            display: flex;
-            gap: 20px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            background-color: var(--pink-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-icon i {
-            font-size: 1.3rem;
-            color: var(--pink-dark);
-        }
-
-        .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .contact-text p, .contact-text a {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .map-wrapper {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 6px solid var(--white);
-            outline: 1px solid rgba(0,0,0,0.05);
-            height: 400px;
-        }
-
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0f172a;
-            color: #94a3b8;
-            padding: 80px 0 40px 0;
-            font-size: 0.95rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-
-        .footer-about p {
-            max-width: 320px;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: var(--transition-smooth);
-        }
-
-        .social-link:hover {
-            background-color: var(--pink);
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            transition: var(--transition-smooth);
-        }
-
-        .footer-links a:hover {
-            color: var(--pink);
-            padding-left: 5px;
-        }
-
-        .footer-hours-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 30px;
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        /* Botão Voltar ao Topo (Canto Esquerdo) */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--white);
-            color: var(--dark);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 99;
-            transition: var(--transition-smooth);
-            opacity: 0;
-            pointer-events: none;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--pink-light);
-            color: var(--pink-dark);
-            transform: translateY(-3px);
-        }
-
-        /* Botão Flutuante WhatsApp (Canto Direito) */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #25d366;
-            color: var(--white);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 99;
-            transition: var(--transition-smooth);
-            animation: pulse-whatsapp 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.08) translateY(-3px);
-            background-color: #20ba5a;
-        }
-
-        /* CTA Bar Fixa no Rodapé */
-        .cta-fixed-bar {
-            position: fixed;
-            bottom: -100px;
-            left: 0;
-            width: 100%;
-            background-color: var(--white);
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
-            z-index: 98;
-            padding: 12px 24px;
-            transition: var(--transition-smooth);
-            border-top: 3px solid var(--pink);
-        }
-
-        .cta-fixed-bar.visible {
-            bottom: 0;
-        }
-
-        .cta-bar-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 20px;
-        }
-
-        .cta-bar-text {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-
-        .cta-bar-text span {
-            color: var(--pink-dark);
-        }
-
-        .cta-fixed-bar .btn-primary {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-
-        /* Animações Keyframes */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes morphing {
-            0% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 30% 60% 50%; }
-            100% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
-        }
-
-        @keyframes pulse-whatsapp {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Responsividade */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        /* RESET */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--bg); overflow-x: hidden; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* HEADER */
+        .header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.06); padding: 14px 0; transition: var(--transition); }
+        .header-top { background: linear-gradient(135deg, #ea580c, #f97316); color: #fff; font-size: 0.82rem; padding: 6px 0; text-align: center; font-weight: 600; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.35rem; }
+        .logo-name { background: linear-gradient(135deg, #ea580c, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-desktop { display: flex; align-items: center; gap: 28px; }
+        .nav-desktop a { font-size: 0.9rem; font-weight: 600; color: var(--text); transition: color 0.2s; }
+        .nav-desktop a:hover { color: var(--primary); }
+        .btn-nav { background: var(--primary); color: #fff !important; padding: 8px 20px; border-radius: 50px; font-size: 0.82rem !important; transition: var(--transition) !important; margin-left: 4px; }
+        .btn-nav:hover { background: var(--primary-dark) !important; transform: translateY(-1px); }
+        .menu-toggle { display: none; font-size: 1.4rem; color: var(--secondary); cursor: pointer; background: none; border: none; }
+        .mobile-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 20px 24px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-top: 1px solid #eee; z-index: 99; }
+
+        /* HERO */
+        .hero { padding: 170px 0 90px; background: radial-gradient(circle at top right, #fff7ed 0%, #fffbeb 100%); position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; background: var(--white); clip-path: ellipse(60% 100% at 50% 100%); }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 18px; box-shadow: var(--shadow-sm); }
+        .hero h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 18px; color: #9a3412; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; max-width: 540px; }
+        .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 50px; background: var(--primary); color: #fff; font-weight: 700; font-size: 1rem; font-family: 'Poppins', sans-serif; border: none; cursor: pointer; transition: var(--transition); animation: pulse-btn 3s infinite; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        @keyframes pulse-btn { 0%,100%{box-shadow:0 4px 15px rgba(249,115,22,0.4)} 50%{box-shadow:0 6px 30px rgba(249,115,22,0.7)} }
+        .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 50px; border: 2px solid var(--primary); color: var(--primary-dark); font-weight: 700; font-size: 1rem; transition: var(--transition); }
+        .btn-outline:hover { background: var(--accent); transform: translateY(-2px); }
+        .hero-visual { display: flex; justify-content: center; position: relative; }
+        .hero-blob { width: 320px; height: 320px; background: linear-gradient(135deg, #fff7ed, #fffbeb); border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; position: absolute; animation: morphing 15s ease-in-out infinite; z-index: 0; }
+        .hero-emoji { font-size: 9rem; position: relative; z-index: 1; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+        @keyframes morphing { 0%,100%{border-radius:50% 50% 30% 70%/50% 60% 40% 60%} 50%{border-radius:30% 60% 70% 40%/50% 30% 60% 50%} }
+
+        /* STATS BAR */
+        .stats-bar { background: linear-gradient(135deg, #ea580c, #f97316); padding: 36px 0; position: relative; z-index: 5; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+        .stat-item { padding: 10px; }
+        .stat-item:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.15); }
+        .stat-num { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #fef3c7; line-height: 1; }
+        .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.8); margin-top: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* SERVIÇOS */
+        .services { padding: 90px 0; background: var(--white); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: #ea580c; display: block; margin-bottom: 10px; }
+        .section-title { font-size: clamp(1.7rem, 3vw, 2.3rem); color: var(--secondary-dark); margin-bottom: 12px; }
+        .section-sub { color: var(--text-muted); font-size: 1rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .service-card { background: var(--bg); border-radius: var(--radius-md); padding: 36px 28px; box-shadow: var(--shadow-sm); border: 1px solid transparent; transition: var(--transition); }
+        .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(244,114,182,0.2); }
+        .service-icon { width: 60px; height: 60px; border-radius: 16px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 20px; transition: var(--transition); }
+        .service-card:hover .service-icon { background: var(--purple-light); transform: scale(1.1); }
+        .service-card h3 { font-size: 1.15rem; color: var(--secondary-dark); margin-bottom: 10px; }
+        .service-card p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+
+        /* DIFERENCIAIS */
+        .why { padding: 90px 0; background: var(--bg); }
+        .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .why-visual { background: linear-gradient(135deg, #fff7ed, #fffbeb); border-radius: 28px; padding: 48px; text-align: center; min-height: 380px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .why-visual-emoji { font-size: 6rem; margin-bottom: 16px; }
+        .why-visual h3 { font-size: 1.4rem; color: var(--secondary-dark); margin-bottom: 8px; }
+        .why-visual p { color: var(--text-muted); font-size: 0.9rem; max-width: 240px; }
+        .why-features { display: flex; flex-direction: column; gap: 28px; }
+        .why-feature { display: flex; gap: 18px; align-items: flex-start; }
+        .why-icon { width: 46px; height: 46px; border-radius: 50%; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; color: var(--secondary); }
+        .why-text h4 { font-size: 1.05rem; color: var(--secondary-dark); margin-bottom: 5px; }
+        .why-text p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* DEPOIMENTOS */
+        .testimonials { padding: 90px 0; background: var(--white); }
+        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .test-card { background: var(--bg); border-radius: var(--radius-md); padding: 32px; border-top: 4px solid #f97316; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm); }
+        .test-stars { color: #fbbf24; letter-spacing: 2px; margin-bottom: 14px; font-size: 1rem; }
+        .test-quote { font-style: italic; font-size: 0.96rem; color: var(--text); line-height: 1.75; flex-grow: 1; margin-bottom: 22px; }
+        .test-author { display: flex; align-items: center; gap: 12px; }
+        .test-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-weight: 800; font-size: 1rem; flex-shrink: 0; }
+        .test-name { font-weight: 700; font-size: 0.92rem; color: var(--secondary-dark); }
+        .test-type { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* CTA FINAL */
+        .cta-final { padding: 90px 0; background: linear-gradient(135deg, #7c2d12, #9a3412); color: #fff; text-align: center; position: relative; overflow: hidden; }
+        .cta-final::before { content: ''; position: absolute; top: -50%; left: -30%; width: 80%; height: 180%; background: radial-gradient(circle, rgba(244,114,182,0.15) 0%, transparent 60%); }
+        .cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+        .cta-final h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 16px; }
+        .cta-final p { font-size: 1.05rem; opacity: 0.88; margin-bottom: 36px; }
+        .cta-hint { font-size: 0.82rem; opacity: 0.55; margin-top: 14px; display: block; }
+
+        /* LOCALIZAÇÃO */
+        .location { padding: 90px 0; background: var(--bg); }
+        .location-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: start; }
+        .contact-cards { display: flex; flex-direction: column; gap: 22px; }
+        .contact-card { display: flex; gap: 18px; background: #fff; padding: 22px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+        .contact-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--accent); display: flex; align-items: center; justify-content: center; color: var(--primary-dark); font-size: 1.2rem; flex-shrink: 0; }
+        .contact-info h4 { font-size: 1rem; color: var(--secondary-dark); margin-bottom: 4px; }
+        .contact-info p, .contact-info a { font-size: 0.9rem; color: var(--text-muted); }
+        .map-wrap { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 6px solid #fff; height: 400px; }
+        .map-wrap iframe { width: 100%; height: 100%; border: none; }
+
+        /* FOOTER */
+        .footer { background: #0f172a; color: #64748b; padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand h3 { color: #fff; font-size: 1.2rem; margin-bottom: 12px; }
+        .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 280px; margin-bottom: 18px; }
+        .footer-socials { display: flex; gap: 12px; }
+        .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #fff; transition: var(--transition); }
+        .social-btn:hover { background: #f97316; transform: translateY(-2px); }
+        .footer-col h4 { color: #fff; font-size: 0.95rem; margin-bottom: 14px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+        .footer-col ul a { font-size: 0.88rem; transition: color 0.2s; }
+        .footer-col ul a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 22px; text-align: center; font-size: 0.8rem; }
+
+        /* FLOAT */
+        .wa-float { position: fixed; bottom: 28px; right: 28px; height: 52px; border-radius: 50px; background: #25d366; color: #fff; display: flex; align-items: center; gap: 9px; padding: 0 20px; font-weight: 700; font-size: 0.85rem; box-shadow: 0 4px 20px rgba(37,211,102,0.45); z-index: 999; transition: var(--transition); animation: wa-pulse 2.5s infinite; }
+        .wa-float:hover { background: #20ba5a; transform: translateY(-2px); }
+        @keyframes wa-pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)} 50%{box-shadow:0 6px 30px rgba(37,211,102,0.7)} }
+
+        .back-top { position: fixed; bottom: 28px; left: 28px; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--secondary-dark); border: 1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 999; opacity: 0; transform: translateY(12px); pointer-events: none; transition: all 0.3s ease; font-size: 1.1rem; }
+        .back-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .back-top:hover { background: var(--accent); color: var(--primary-dark); }
+
+        .cta-bar { position: fixed; bottom: -100px; left: 0; right: 0; background: #fff; border-top: 3px solid #f97316; padding: 12px 24px; z-index: 998; transition: bottom 0.4s ease; box-shadow: 0 -4px 20px rgba(0,0,0,0.08); }
+        .cta-bar.show { bottom: 0; }
+        .cta-bar-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; gap: 16px; }
+        .cta-bar-text { font-weight: 700; font-size: 0.92rem; color: var(--secondary-dark); }
+        .cta-bar-text span { color: #ea580c; }
+        .btn-sm { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 50px; background: #25d366; color: #fff; font-weight: 700; font-size: 0.82rem; transition: var(--transition); }
+        .btn-sm:hover { background: #20ba5a; }
+
+        /* MOBILE */
         @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1.1fr 0.9fr;
-            }
-            .hero h1 {
-                font-size: 2.6rem;
-            }
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            .stat-card:nth-child(2) {
-                border-right: none;
-            }
-            .stat-card:nth-child(even) {
-                border-right: none;
-            }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(even) { border-right: none; }
+            .stat-item:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; }
         }
-
         @media (max-width: 768px) {
-            header {
-                padding: 10px 0;
-            }
-            .header-top {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                padding: 20px 0;
-                display: none;
-                border-top: 1px solid rgba(0,0,0,0.05);
-            }
-            nav.active {
-                display: block;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .hero {
-                padding: 120px 0 70px 0;
-            }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero p {
-                margin: 0 auto 30px auto;
-            }
-            .hero-ctas {
-                justify-content: center;
-            }
-            .hero-image-container {
-                display: none;
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .why-illustration {
-                order: -1;
-                min-height: 250px;
-                padding: 30px;
-            }
-            .why-illustration-inner i {
-                font-size: 5rem;
-            }
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            .location-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .map-wrapper {
-                height: 300px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .cta-bar-text {
-                font-size: 0.85rem;
-            }
-            .cta-fixed-bar {
-                padding: 10px 16px;
-            }
-            /* Reposiciona botões fixos acima da barra de CTA para não tampar */
-            .back-to-top {
-                bottom: 80px;
-                left: 20px;
-                width: 44px;
-                height: 44px;
-            }
-            .whatsapp-float {
-                bottom: 80px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
+            .header-top { display: none; }
+            .nav-desktop { display: none; }
+            .menu-toggle { display: block; }
+            .mobile-nav.open { display: flex; flex-direction: column; gap: 14px; }
+            .mobile-nav a { font-weight: 600; color: var(--text); font-size: 0.95rem; padding: 8px 0; border-bottom: 1px solid #f3f4f6; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin: 0 auto 28px; }
+            .hero-btns { justify-content: center; }
+            .hero-visual { display: none; }
+            .why-grid { grid-template-columns: 1fr; gap: 36px; }
+            .why-visual { order: -1; min-height: 220px; padding: 28px; }
+            .test-grid { grid-template-columns: 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .back-top { bottom: 80px; left: 16px; }
+            .wa-float { bottom: 80px; right: 16px; }
+            .map-wrap { height: 300px; }
+            .cta-bar-text { display: none; }
+            .cta-bar-inner { justify-content: center; }
+            .btn-sm { width: 100%; justify-content: center; }
         }
-
         @media (max-width: 600px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .stat-card {
-                border-right: none !important;
-                border-bottom: 1px solid #f3f4f6;
-                padding-bottom: 20px;
-            }
-            .stat-card:last-child {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
-            .cta-bar-text {
-                display: none;
-            }
-            .cta-bar-container {
-                justify-content: center;
-                width: 100%;
-            }
-            .cta-fixed-bar .btn-primary {
-                width: 100%;
-                padding: 12px;
-            }
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Fixo -->
-    <header id="header">
+    <!-- SEÇÃO: HEADER -->
+    <header class="header" id="header">
         <div class="header-top">
-            <i class="fa-regular fa-clock"></i> Segunda a Sábado, até as 19h | Atendimento Amoroso 🐾
+            <i class="fa-regular fa-clock"></i> Segunda a Sábado até as 19h &nbsp;|&nbsp; 🐾 Atendimento Amoroso em Feira de Santana
         </div>
-        <div class="header-main container">
+        <div class="container nav-wrapper">
             <a href="#" class="logo">
-                <!-- SVG Logo Temático (Patinha + Nome) -->
-                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="55" r="25" fill="#f472b6" />
-                    <circle cx="25" cy="25" r="12" fill="#a855f7" />
-                    <circle cx="50" cy="15" r="12" fill="#a855f7" />
-                    <circle cx="75" cy="25" r="12" fill="#a855f7" />
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#f97316"/>
+                    <circle cx="7.5" cy="8" r="1.2" fill="white" opacity="0.8"/>
+                    <circle cx="16.5" cy="8" r="1.2" fill="white" opacity="0.8"/>
+                    <circle cx="12" cy="10.5" r="1.2" fill="white" opacity="0.8"/>
                 </svg>
-                <span class="logo-text">Lalay Pet Shop</span>
+                <span class="logo-name">Lalay Pet Shop</span>
             </a>
-            
-            <i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>
-            
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Por que Lalay?</a></li>
-                    <li><a href="#depoimentos">Avaliações</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
+            <nav class="nav-desktop">
+                <a href="#servicos">Serviços</a>
+                <a href="#diferenciais">Por que nós?</a>
+                <a href="#depoimentos">Avaliações</a>
+                <a href="#contato">Localização</a>
+                <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="btn-nav">Agendar Agora</a>
             </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
         </div>
+        <nav class="mobile-nav container" id="mobileNav">
+            <a href="#servicos">Serviços</a>
+            <a href="#diferenciais">Por que nós?</a>
+            <a href="#depoimentos">Avaliações</a>
+            <a href="#contato">Localização</a>
+            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="btn-sm">Agendar pelo WhatsApp</a>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- SEÇÃO: HERO -->
     <section class="hero" id="inicio">
         <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fa-solid fa-medal"></i> 4.9★ no Google com muito carinho!
-                </div>
-                <h1>Onde o cuidado e o <span>amor de titia</span> encontram o seu melhor amigo!</h1>
-                <p>Somos um pet shop completo gerido por mulheres apaixonadas por animais. Aqui, cada detalhe é planejado para o bem-estar e a segurança do seu companheiro de quatro patas.</p>
-                <div class="hero-ctas">
-                    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Agendar Horário
-                    </a>
-                    <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+            <div class="reveal">
+                <div class="hero-badge"><i class="fa-solid fa-medal"></i> 4.9★ no Google · 3º maior de Feira de Santana</div>
+                <h1>Onde o carinho das titias faz seu pet se sentir <span>em casa</span></h1>
+                <p>Atendimento humanizado, preços acessíveis e muito amor em cada cuidado. Seu melhor amigo merece isso.</p>
+                <div class="hero-btns">
+                    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Agendar Horário</a>
+                    <a href="#servicos" class="btn-outline">Ver Serviços</a>
                 </div>
             </div>
-            <div class="hero-image-container">
-                <div class="hero-image-bg"></div>
-                <div class="hero-illustration">
-                    <i class="fa-solid fa-dog"></i>
-                </div>
+            <div class="hero-visual">
+                <div class="hero-blob"></div>
+                <div class="hero-emoji">🐶</div>
             </div>
         </div>
     </section>
 
-    <!-- Barra de Stats -->
-    <section class="container stats-bar">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fa-solid fa-star stat-icon"></i>
-                <div class="stat-number">4.9★</div>
-                <div class="stat-label">Nota no Google</div>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-comments stat-icon"></i>
-                <div class="stat-number">32</div>
-                <div class="stat-label">Avaliações Reais</div>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-heart stat-icon"></i>
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Cuidado de Titia</div>
-            </div>
-            <div class="stat-card">
-                <i class="fa-solid fa-venus stat-icon"></i>
-                <div class="stat-number">Feminina</div>
-                <div class="stat-label">Liderança e Carinho</div>
-            </div>
+    <!-- SEÇÃO: STATS BAR -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">No Google</div></div>
+            <div class="stat-item"><div class="stat-num">32</div><div class="stat-label">Avaliações Reais</div></div>
+            <div class="stat-item"><div class="stat-num">3º</div><div class="stat-label">Maior da Cidade</div></div>
+            <div class="stat-item"><div class="stat-num">💜</div><div class="stat-label">Gestão Feminina</div></div>
         </div>
-    </section>
+    </div>
 
-    <!-- Seção Nossos Serviços -->
+    <!-- SEÇÃO: SERVIÇOS -->
     <section class="services" id="servicos">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Nossos Serviços</h2>
-                <p>Oferecemos o cuidado completo que seu pet precisa para estar sempre saudável, limpinho e muito feliz.</p>
+                <span class="section-label">O que oferecemos</span>
+                <h2 class="section-title">Cuidado completo para quem você ama 🐾</h2>
+                <p class="section-sub">Tudo que seu pet precisa em um só lugar, com muito carinho</p>
             </div>
             <div class="services-grid">
-                
-                <!-- Banho & Tosa -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-bath"></i>
-                    </div>
-                    <h3>Banho & Tosa</h3>
-                    <p>Água quentinha, secagem cuidadosa e tosa com amor. Higienização e estética com produtos de excelência.</p>
-                </div>
-
-                <!-- Consulta Veterinária -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-stethoscope"></i>
-                    </div>
-                    <h3>Consulta Veterinária</h3>
-                    <p>Atendimento clínico com profissionais atenciosas e capacitadas para examinar a saúde geral do seu pet.</p>
-                </div>
-
-                <!-- Vacinas & Medicamentos -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-syringe"></i>
-                    </div>
-                    <h3>Vacinas & Medicamentos</h3>
-                    <p>Imunização em dia e uma linha farmacêutica completa para a prevenção e tratamento do seu companheiro.</p>
-                </div>
-
-                <!-- Ração & Petiscos -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-bone"></i>
-                    </div>
-                    <h3>Ração & Petiscos</h3>
-                    <p>As marcas mais recomendadas de alimentos e petiscos selecionados para uma rotina nutritiva e saborosa.</p>
-                </div>
-
-                <!-- Acessórios para Pets -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-tag"></i>
-                    </div>
-                    <h3>Acessórios para Pets</h3>
-                    <p>Brinquedos educativos, caminhas confortáveis, coleiras e guias seguras e roupas cheias de charme.</p>
-                </div>
-
-                <!-- Entrega a Domicílio -->
-                <div class="service-card reveal">
-                    <div class="service-icon-wrapper">
-                        <i class="fa-solid fa-truck"></i>
-                    </div>
-                    <h3>Entrega a Domicílio</h3>
-                    <p>Praticidade e comodidade: levamos alimentos, remédios e mimos diretamente na sua residência.</p>
-                </div>
-
+                <div class="service-card reveal"><div class="service-icon">🛁</div><h3>Banho & Tosa</h3><p>Higiene profunda com produtos delicados, secagem cuidadosa e finalização impecável.</p></div>
+                <div class="service-card reveal"><div class="service-icon">🩺</div><h3>Consulta Veterinária</h3><p>Profissionais capacitadas para cuidar da saúde geral do seu pet com atenção e carinho.</p></div>
+                <div class="service-card reveal"><div class="service-icon">💉</div><h3>Vacinas & Medicamentos</h3><p>Imunização em dia e linha farmacêutica completa para prevenção e tratamento.</p></div>
+                <div class="service-card reveal"><div class="service-icon">🦴</div><h3>Ração & Petiscos</h3><p>As marcas mais recomendadas para uma rotina nutritiva e muito saborosa.</p></div>
+                <div class="service-card reveal"><div class="service-icon">🎾</div><h3>Acessórios para Pets</h3><p>Brinquedos, caminhas, coleiras e roupinhas para deixar seu pet ainda mais fofo.</p></div>
+                <div class="service-card reveal"><div class="service-icon">🚚</div><h3>Entrega a Domicílio</h3><p>Praticidade total: levamos alimentos, remédios e mimos direto na sua porta.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Por que escolher a Lalay? -->
-    <section class="why-choose" id="sobre">
+    <!-- SEÇÃO: DIFERENCIAIS -->
+    <section class="why" id="diferenciais">
         <div class="container why-grid">
-            <div class="reveal">
-                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
-                    <h2 style="text-align: left;">Por que escolher a Lalay?</h2>
-                    <p>Acreditamos que cada animalzinho é único e merece muito respeito e afeição.</p>
+            <div class="why-visual reveal">
+                <div class="why-visual-emoji">🐾</div>
+                <h3>Amor & Dedicação</h3>
+                <p>Cuidamos de cada detalhe com a delicadeza de quem ama de verdade</p>
+            </div>
+            <div class="reveal" style="transition-delay:0.1s">
+                <div class="section-header" style="text-align:left;margin-bottom:28px">
+                    <span class="section-label">Por que nos escolher</span>
+                    <h2 class="section-title" style="text-align:left">Um espaço criado por mulheres que amam animais</h2>
                 </div>
                 <div class="why-features">
-                    <div class="feature-item">
-                        <div class="feature-icon-box">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Atendimento Amoroso</h4>
-                            <p>Nosso cuidado é humanizado, tratando cada pet como um membro da nossa própria família.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-box">
-                            <i class="fa-solid fa-venus"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Empreendedoras Apaixonadas</h4>
-                            <p>Uma empresa fundada por mulheres, dedicada ao profissionalismo aliado ao instinto protetor.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon-box">
-                            <i class="fa-solid fa-shield-dog"></i>
-                        </div>
-                        <div class="feature-text">
-                            <h4>Ambiente Seguro</h4>
-                            <p>Espaço limpo, adaptado e higienizado constantemente para garantir o bem-estar dos animais.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="why-illustration reveal">
-                <div class="why-illustration-inner">
-                    <i class="fa-solid fa-paw"></i>
-                    <h3>Amor e Dedicação</h3>
-                    <p style="color: var(--text-muted); max-width: 300px; margin: 10px auto 0 auto;">Cuidamos de cada detalhe com a delicadeza de quem ama de verdade.</p>
+                    <div class="why-feature"><div class="why-icon"><i class="fa-solid fa-heart"></i></div><div class="why-text"><h4>Atendimento Amoroso</h4><p>Cada pet é tratado como membro da nossa própria família — com cuidado real.</p></div></div>
+                    <div class="why-feature"><div class="why-icon"><i class="fa-solid fa-venus"></i></div><div class="why-text"><h4>Empresa Feminina</h4><p>Fundada por empreendedoras apaixonadas — profissionalismo com instinto protetor.</p></div></div>
+                    <div class="why-feature"><div class="why-icon"><i class="fa-solid fa-tag"></i></div><div class="why-text"><h4>Preços Acessíveis</h4><p>Qualidade premium sem pesar no bolso. Porque amor não precisa custar caro.</p></div></div>
+                    <div class="why-feature"><div class="why-icon"><i class="fa-solid fa-shield-dog"></i></div><div class="why-text"><h4>Ambiente Seguro</h4><p>Espaço limpo e higienizado constantemente para o bem-estar de todos.</p></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Depoimentos Reais -->
+    <!-- SEÇÃO: DEPOIMENTOS -->
     <section class="testimonials" id="depoimentos">
         <div class="container">
             <div class="section-header reveal">
-                <h2>O que dizem os clientes</h2>
-                <p>Nossa maior recompensa é o carinho dos clientes e ver as caudas abanando de alegria.</p>
+                <span class="section-label">Quem já viveu</span>
+                <h2 class="section-title">O que dizem os tutores 🐶</h2>
+                <p class="section-sub">Nossa maior recompensa é ver as caudas abanando de alegria</p>
             </div>
-            <div class="testimonials-grid">
-                
-                <div class="testimonial-card reveal">
-                    <div>
-                        <div class="testimonial-stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="testimonial-quote">"Minha mel amou os cuidados das titias, sem dúvidas um ótimo petshop!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div class="author-info">
-                            <h4>Mãe da Mel</h4>
-                            <span>Cliente Verificada</span>
-                        </div>
-                    </div>
+            <div class="test-grid">
+                <div class="test-card reveal">
+                    <div><div class="test-stars">★★★★★</div><p class="test-quote">"Minha mel amou os cuidados das titias, sem dúvidas um ótimo petshop!"</p></div>
+                    <div class="test-author"><div class="test-avatar">M</div><div><div class="test-name">Mãe da Mel</div><div class="test-type">Cliente Verificada ✓</div></div></div>
                 </div>
-
-                <div class="testimonial-card reveal">
-                    <div>
-                        <div class="testimonial-stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="testimonial-quote">"Ótimo atendimento e produtos com preços incríveis e acessíveis."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">P</div>
-                        <div class="author-info">
-                            <h4>Tutor do Thor</h4>
-                            <span>Cliente Verificado</span>
-                        </div>
-                    </div>
+                <div class="test-card reveal">
+                    <div><div class="test-stars">★★★★★</div><p class="test-quote">"Ótimo atendimento e produtos com preços incríveis e acessíveis. Super recomendo!"</p></div>
+                    <div class="test-author"><div class="test-avatar">U</div><div><div class="test-name">Uendi Oliveira</div><div class="test-type">Cliente Verificada ✓</div></div></div>
                 </div>
-
-                <div class="testimonial-card reveal">
-                    <div>
-                        <div class="testimonial-stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="testimonial-quote">"Parabéns a Lalay petshop, pessoal trabalha com amor aos animais."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">F</div>
-                        <div class="author-info">
-                            <h4>Tutor do Fred</h4>
-                            <span>Cliente Verificado</span>
-                        </div>
-                    </div>
+                <div class="test-card reveal">
+                    <div><div class="test-stars">★★★★★</div><p class="test-quote">"Profissionais de qualidade, tratam nossa bb com muito amor e carinho. Super recomendo!"</p></div>
+                    <div class="test-author"><div class="test-avatar">L</div><div><div class="test-name">Lázaro Nunes</div><div class="test-type">Cliente Verificado ✓</div></div></div>
                 </div>
-
-                <div class="testimonial-card reveal" style="display: none;" id="extra-test">
-                    <div>
-                        <div class="testimonial-stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="testimonial-quote">"Excelente atendimento, tem uma atenção e cuidado muito especial com o pet, super recomendo!!!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">L</div>
-                        <div class="author-info">
-                            <h4>Mãe da Luna</h4>
-                            <span>Cliente Verificada</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Seção de Agendamento -->
-    <section class="cta-booking">
-        <div class="container cta-booking-content reveal">
-            <h2>Quer ver seu pet cheiroso e feliz?</h2>
-            <p>Os atendimentos para Banho, Tosa e Consultas Veterinárias podem ser agendados em poucos segundos através do nosso WhatsApp. Escolha o melhor dia e horário!</p>
-            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp agora
-            </a>
+    <!-- SEÇÃO: CTA FINAL -->
+    <section class="cta-final">
+        <div class="container cta-inner reveal">
+            <h2>Quer ver seu pet cheiroso e feliz? 🐾</h2>
+            <p>Agende o banho, tosa ou consulta em segundos pelo WhatsApp. Seg a Sáb até as 19h.</p>
+            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="btn-primary"><i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp agora</a>
+            <span class="cta-hint">Respondemos rápido! Segunda a Sábado até as 19h 🕐</span>
         </div>
     </section>
 
-    <!-- Localização e Contato -->
-    <section class="location-contact" id="contato">
+    <!-- SEÇÃO: LOCALIZAÇÃO -->
+    <section class="location" id="contato">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Onde Estamos & Contatos</h2>
-                <p>Venha nos visitar ou tire suas dúvidas rapidamente.</p>
+                <span class="section-label">Onde estamos</span>
+                <h2 class="section-title">Venha nos visitar em Feira de Santana</h2>
             </div>
             <div class="location-grid">
-                
-                <div class="contact-info reveal">
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Endereço</h4>
-                            <p>R. Oscar Freitas, 55A - Lagoa Salgada<br>Feira de Santana - BA, CEP 44082-070</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Telefone & WhatsApp</h4>
-                            <p><a href="https://api.whatsapp.com/send?phone=5575981116670" target="_blank">(75) 98111-6670</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-method">
-                        <div class="contact-icon">
-                            <i class="fa-solid fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Horário de Funcionamento</h4>
-                            <p>Segunda a Sábado: Até as 19h<br>Domingo: Fechado</p>
-                        </div>
-                    </div>
+                <div class="contact-cards reveal">
+                    <div class="contact-card"><div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div><div class="contact-info"><h4>Endereço</h4><p>R. Oscar Freitas, 55A - Lagoa Salgada<br>Feira de Santana - BA, CEP 44082-070</p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div><div class="contact-info"><h4>WhatsApp</h4><p><a href="https://api.whatsapp.com/send?phone=5575981116670" target="_blank">(75) 98111-6670</a></p></div></div>
+                    <div class="contact-card"><div class="contact-icon"><i class="fa-solid fa-clock"></i></div><div class="contact-info"><h4>Horário de Funcionamento</h4><p>Segunda a Sábado: 8h às 19h<br>Domingo: Fechado</p></div></div>
                 </div>
-
-                <div class="map-wrapper reveal">
-                    <!-- Google Maps Iframe Real -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.7027582531065!2d-38.93721342398457!3d-12.268393387985474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714399e59d9c8bf%3A0xc3f6e5a0da2928ee!2sR.%20Oscar%20Freitas%2C%2055a%20-%20Lagoa%20Salgada%2C%20Feira%20de%20Santana%20-%20BA%2C%2044082-070!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="map-wrap reveal" style="transition-delay:0.15s">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.7027582531065!2d-38.93721342398457!3d-12.268393387985474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714379b9943b421%3A0xf510703ff92460c1!2sLalay%20Pet%20Shop!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <svg width="35" height="35" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="55" r="25" fill="#f472b6" />
-                        <circle cx="25" cy="25" r="12" fill="#a855f7" />
-                        <circle cx="50" cy="15" r="12" fill="#a855f7" />
-                        <circle cx="75" cy="25" r="12" fill="#a855f7" />
-                    </svg>
-                    <span class="footer-logo-text">Lalay Pet Shop</span>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>🐾 Lalay Pet Shop</h3>
+                    <p>Cuidado amoroso para animais domésticos, executado com o carinho de quem ama o que faz. Empresa de empreendedoras em Feira de Santana.</p>
+                    <div class="footer-socials">
+                        <a href="https://api.whatsapp.com/send?phone=5575981116670" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
-                <p>Cuidado de alto nível para animais domésticos, executado com o afeto de quem ama o que faz.</p>
-                <div class="footer-socials">
-                    <a href="https://api.whatsapp.com/send?phone=5575981116670" class="social-link" aria-label="WhatsApp" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#servicos">Nossos Serviços</a></li>
+                        <li><a href="#diferenciais">Por que Lalay?</a></li>
+                        <li><a href="#depoimentos">Avaliações</a></li>
+                        <li><a href="#contato">Localização</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Funcionamento</h4>
+                    <ul>
+                        <li><span style="color:#fff">Seg a Sex:</span> 8h às 19h</li>
+                        <li><span style="color:#fff">Sábado:</span> 8h às 19h</li>
+                        <li><span style="color:#fff">Domingo:</span> Fechado</li>
+                    </ul>
                 </div>
             </div>
-
-            <div>
-                <h4 class="footer-title">Links Rápidos</h4>
-                <ul class="footer-links">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#servicos">Nossos Serviços</a></li>
-                    <li><a href="#sobre">Por que Lalay?</a></li>
-                    <li><a href="#depoimentos">Avaliações</a></li>
-                    <li><a href="#contato">Fale Conosco</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Lalay Pet Shop. Todos os direitos reservados. Feira de Santana - BA</p>
             </div>
-
-            <div>
-                <h4 class="footer-title">Funcionamento</h4>
-                <ul class="footer-hours-list">
-                    <li><strong>Segunda a Sexta:</strong> 08:00 às 19:00</li>
-                    <li><strong>Sábado:</strong> 08:00 às 19:00</li>
-                    <li><strong>Domingos e Feriados:</strong> Fechado</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom container">
-            <p>&copy; <span id="current-year"></span> Lalay Pet Shop. Todos os direitos reservados. CNPJ sob consulta.</p>
         </div>
     </footer>
 
-    <!-- Botão Voltar ao Topo (Canto Esquerdo) -->
-    <div class="back-to-top" id="back-to-top" title="Voltar ao Topo">
-        <i class="fa-solid fa-arrow-up"></i>
-    </div>
-
-    <!-- Botão Flutuante WhatsApp (Canto Direito) -->
-    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="whatsapp-float" target="_blank" aria-label="Chamar no WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+    <!-- ELEMENTOS FLUTUANTES -->
+    <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="wa-float">
+        <i class="fa-brands fa-whatsapp" style="font-size:1.3rem"></i> Agendar agora
     </a>
 
-    <!-- CTA Bar Fixa no Rodapé -->
-    <div class="cta-fixed-bar" id="cta-fixed-bar">
-        <div class="cta-bar-container">
-            <div class="cta-bar-text">
-                🐶 Banho, Tosa e Veterinário com o <span>amor de titia</span>! Agende hoje mesmo:
-            </div>
-            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" class="btn btn-primary" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
-            </a>
+    <button class="back-top" id="backTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <div class="cta-bar" id="ctaBar">
+        <div class="cta-bar-inner">
+            <div class="cta-bar-text">🐶 Banho, Tosa e Vet com <span>amor de titia</span>! Agende hoje:</div>
+            <a href="https://api.whatsapp.com/send?phone=5575981116670&text=Olá!%20Gostaria%20de%20agendar%20um%20horário%20na%20Lalay%20Pet%20Shop!" target="_blank" class="btn-sm"><i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp</a>
         </div>
     </div>
 
-    <!-- Scripts de Interatividade -->
     <script>
-        // Define o ano atual no footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Menu Mobile Toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('fa-bars');
-            menuToggle.classList.toggle('fa-xmark');
+        // Menu mobile
+        const toggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('mobileNav');
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            toggle.querySelector('i').className = nav.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
         });
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            nav.classList.remove('open');
+            toggle.querySelector('i').className = 'fa-solid fa-bars';
+        }));
 
-        // Fecha menu ao clicar em qualquer item (Mobile)
-        document.querySelectorAll('#nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.add('fa-bars');
-                menuToggle.classList.remove('fa-xmark');
-            });
-        });
-
-        // Alternar visualização da quarta avaliação rotativa para dinamismo de depoimentos
-        const testimonials = document.querySelectorAll('.testimonial-card');
-        if (testimonials.length > 3) {
-            let index = 0;
-            setInterval(() => {
-                testimonials[index].style.display = 'none';
-                index = (index + 1) % testimonials.length;
-                
-                // Garante exibição de 3 por vez
-                for (let i = 0; i < 3; i++) {
-                    let showIndex = (index + i) % testimonials.length;
-                    testimonials[showIndex].style.display = 'flex';
-                }
-            }, 6000);
-        }
-
-        // Elementos flutuantes controlados por scroll
-        const backToTop = document.getElementById('back-to-top');
-        const ctaFixedBar = document.getElementById('cta-fixed-bar');
-
+        // Scroll events
+        const backTop = document.getElementById('backTop');
+        const ctaBar = document.getElementById('ctaBar');
         window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-
-            // Botão voltar ao topo
-            if (scrollPosition > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-
-            // CTA bar fixa no rodapé
-            if (scrollPosition > 450) {
-                ctaFixedBar.classList.add('visible');
-            } else {
-                ctaFixedBar.classList.remove('visible');
-            }
+            backTop.classList.toggle('show', window.scrollY > 400);
+            ctaBar.classList.toggle('show', window.scrollY > 600);
         });
+        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Scroll Reveal Animation (Intersection Observer)
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Roda a animação apenas uma vez
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
+        // Scroll reveal
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>
